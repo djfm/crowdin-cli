@@ -231,7 +231,7 @@ def unzip_file_with_translations(zipfile_name, dest_path, files_list)
     zipfile.select{ |zip_entry| zip_entry.file? }.each do |f|
       # XXX
       # `f' - relative path in archive
-      file = files_list[f.name]
+      file = files_list[f.name] || f.name
       if file
         fpath = File.join(dest_path, file)
         FileUtils.mkdir_p(File.dirname(fpath))
